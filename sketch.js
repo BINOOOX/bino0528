@@ -158,11 +158,13 @@ function keyTyped() {
         animations.push(new Key_A()); 
       Tone.start()
       kick.triggerAttackRelease("c2", 1);
+      Tone.start()
     } else if (key == 'z') {
         
         animations.push(new Key_Z());
       Tone.start()
       hihat.triggerAttackRelease("8n");
+      Tone.start()
     } else if (key == 'e') {
       
         
