@@ -81,7 +81,7 @@ function setup() {
 
   //myCanvas=createCanvas(windowWidth, windowHeight); 
   createCanvas(windowWidth, windowHeight);  
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
     let x = random(width);
     let y = random(height);
     let r = random(20, 60);
