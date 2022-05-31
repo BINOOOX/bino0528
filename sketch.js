@@ -233,41 +233,14 @@ function keyPressed(){
 }
 
 class Key_A {
-   setup(){
-     let imgID = 0
-     let pressed = false
-     pressed.onchange = 
-       function(){this.imgID = floor(random(0,4.99))}
-   }
-   draw(){
+    draw(){
      
-     if (keyIsPressed){
-       
-     if (key=='a'){
-       this.pressed = true
-       this.imgID = floor(random(0,4.99))
-       switch(this.imgID){
-         case 0:
-           image(bino13, windowWidth/2, windowHeight/2);
-           break;
-         case 1:
-           image(bino16, windowWidth/2, windowHeight/2);
-           break;
-         case 2:
-           image(bino17, windowWidth/2, windowHeight/2);
-           break;
-         case 3:
-           image(bino18, windowWidth/2, windowHeight/2);
-           break;
-         case 4:
-           image(bino19, windowWidth/2, windowHeight/2);
-           break;
-       }
-     }
-     else
-       this.pressed = false
-     }
- }
+      if (keyIsPressed)
+      if (key=='a'){
+         image(bino9, windowWidth/2, windowHeight/2);
+      }
+ 
+  }   
 }
 
 function keyReleased(){
