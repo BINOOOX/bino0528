@@ -11,6 +11,9 @@
 //let bino01;
 var gif_loadImg, gif_createImg;
 var useColors =["#000","#fff"]
+let bubbles = [],
+  sampleDraw,
+  playRate;
 let myCanvas
 let loop;
 let synth;
@@ -77,8 +80,14 @@ function setup() {
 
 
   //myCanvas=createCanvas(windowWidth, windowHeight); 
-  createCanvas(windowWidth, windowHeight);        
-  
+  createCanvas(windowWidth, windowHeight);  
+    for (let i = 0; i < 20; i++) {
+    let x = random(width);
+    let y = random(height);
+    let r = random(20, 60);
+    let b = new Bubble(x, y, r);
+    bubbles.push(b);
+   }
   synth= new Tone.MembraneSynth({
     oscillator: {
       //type: "sine"
@@ -321,12 +330,22 @@ class Key_R {
   }
 }
 class Key_T {
-  draw(){
-  background(1,250,200);  
-  image(bino4, windowWidth/2, windowHeight/2);
-  image(bino,windowWidth/2, windowHeight*0.8, 880,648 );
-  }  
+  setup(){
 
+  }
+  draw(){
+  background(1,250,200);
+  
+  //image(bino,windowWidth/2, windowHeight*0.8, 880,648 );
+  for (let i = 0; i < bubbles.length; i++) {
+    
+    bubbles[i].move();
+    bubbles[i].show();
+    image(bino4, windowWidth/2, windowHeight/2);
+  }
+   
+   
+}
 
 }
 class Key_Y {
@@ -343,7 +362,7 @@ class Key_Y {
       push()
             translate(width/2,height/2)
     
-            strokeWeight(0.8)
+            strokeWeight(1)
 			beginShape()
 			
 			let rr = width-(i/8)
@@ -353,7 +372,7 @@ class Key_Y {
 		
 			for(var o=0;o<360;o+=4){
 				 
-				let ang = (o/1.1+i/100)+frameCount/(300+o)
+				let ang = (o/1.1+i/100)+frameCount/300
 		
 				curveVertex(cos(ang)*rr,sin(ang)*rr)
 			
@@ -453,4 +472,28 @@ class Key_J{
     
   }
  
+
+}
+class Bubble {
+  constructor(x, y, r) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    
+    
+  }
+
+
+
+  move() {
+    this.x = this.x + random(-2, 2);
+    this.y = this.y + random(-2, 2);
+  }
+
+  show() {
+    stroke(10,200,200);
+    strokeWeight(4);
+    fill(100,0,200);
+    ellipse(this.x, this.y, this.r * 3);
+  }
 }
